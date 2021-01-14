@@ -10,7 +10,7 @@ class Login extends Component {
     this.state = {    
       email:"",
       password:"",
-      errorMessage:""
+      errorMessage:null
     }
   }
   handleChange=(e)=>{
@@ -34,7 +34,7 @@ class Login extends Component {
       if(err.message !== null){
         this.setState({errorMessage:err.message})
       }else{
-        this.setState({errorMessage:"",password:""})
+        this.setState({errorMessage:null,password:""})
       }
     })
   }
@@ -53,7 +53,7 @@ class Login extends Component {
       <FormGroup>
         <Label for="examplePassword">Password</Label>
         <Input type="password" name="password" id="examplePassword" onChange={this.handleChange} value={this.state.password} />
-        {this.state.errorMessage && <Label id="errmessage" for="err">{this.state.errorMessage}</Label>  }    
+        {this.state.errorMessage!==null && <Label id="errmessage" for="err">{this.state.errorMessage}</Label>  }    
       </FormGroup>
          
       {/* <FormGroup>
